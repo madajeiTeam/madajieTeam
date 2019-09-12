@@ -6,7 +6,13 @@ class RootRouter extends Component{
         return(
             <App>
                 <HashRouter>
-
+                    <Switch>
+                        <Route path='/mxy' render={()=>{
+                            return (
+                                <p>骚猫和洋洋真聪明</p>
+                            )
+                        }}></Route>
+                    </Switch>
                 </HashRouter>
             </App>
         )
