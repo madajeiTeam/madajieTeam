@@ -1,12 +1,13 @@
 import React from 'react';
 
 
-function App(props) {
+function Wbr() {
   return (
     <div className="App">
-      {props.children}
+      
+      马大姐要换iphone11啦
     </div>
   );
 }
 
-export default App;
+export default Wbr;
