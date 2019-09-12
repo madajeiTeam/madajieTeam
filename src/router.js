@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {HashRouter,Route,Switch,Redirect} from 'react-router-dom'
 import  App from  './App'
+import Wbr from 'pages/wbr'
 class RootRouter extends Component{
     render() {
         return(
@@ -12,6 +13,10 @@ class RootRouter extends Component{
                                 <p>骚猫和洋洋真聪明</p>
                             )
                         }}></Route>
+
+                    {/* <Redirect exact from = '/' to ='/wbr'> </Redirect> */}
+                        <Route path="/wbr" component={Wbr}></Route>
+
                     </Switch>
                 </HashRouter>
             </App>
