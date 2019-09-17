@@ -1,11 +1,11 @@
 import React,{Component} from 'react'
 import {HashRouter,Route,Switch,Redirect} from 'react-router-dom'
 import  App from  './App'
+import Admin from 'pages/admin'
+import Login from 'pages/login'
 
-import Home from 'pages/home'
-import User from 'pages/user'
-import Cart from 'pages/cart'
-import Goods from 'pages/goods'
+import GoodsList from 'pages/goodsList'
+import GoodsAdd from 'pages/goodsAdd'
 
 
 class RootRouter extends Component{
@@ -14,14 +14,16 @@ class RootRouter extends Component{
             <App>
                 <HashRouter>
                     <Switch>
-                        <Redirect exact from = '/' to='/home'></Redirect>
-                        <Route path='/home' component={Home}></Route>
-                        <Route path='/user' component={User}></Route>
-                        <Route path='/cart' component={Cart}></Route>
-                        <Route path='/goods' component={Goods}></Route>
-
-
-
+                        <Redirect exact from='/' to='/admin'></Redirect>
+                        <Route path='/admin' render={()=>{
+                            return (
+                                <Admin>
+                                    <Route path='/admin/goods/list' component={GoodsList}></Route>
+                                    <Route path='/admin/goods/add' component={GoodsAdd}></Route>
+                                </Admin>
+                            )
+                        }}></Route>
+                        <Route path='/login' component={Login}></Route>
                     </Switch>
                 </HashRouter>
             </App>
