@@ -2,7 +2,7 @@ import axios from 'axios'
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
-    console.log(config)
+    //console.log(config)
     let {method} = config
     let token = localStorage.getItem('token')
     if(method === 'post'){
