@@ -24,15 +24,15 @@ let obj = {
         key: 3,
         path: '/admin/user',
         children: [
-            {name: '会员列表', path: '/admin/user/pie', key: '3-0'},
+            {name: '会员列表', path: '/admin/user/list', key: '3-0'},
         ] 
     },{
         name: '广告位管理',
         key: 4,
         path: '/admin/banner',
         children: [
-            {name: '广告列表', path: '/admin/user/pie', key: '4-0'},
-            {name: '广告添加', path: '/admin/user/pie', key: '4-0'}
+            {name: '广告列表', path: '/admin/banner/list', key: '4-0'},
+            {name: '广告添加', path: '/admin/banner/add', key: '4-1'}
         ] 
     }]
 }
