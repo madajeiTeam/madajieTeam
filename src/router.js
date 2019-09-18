@@ -5,6 +5,7 @@ import Admin from 'pages/admin'
 import Login from 'pages/login'
 import TokenModel from 'components/tokenModel'
 
+import User from 'pages/user/index'
 import GoodsList from 'pages/goodsList'
 import GoodsAdd from 'pages/goodsAdd'
 import Pie from 'pages/pie';
@@ -24,6 +25,7 @@ class RootRouter extends Component{
                                     <Route path='/admin/goods/list' component={GoodsList}></Route>
                                     <Route path='/admin/goods/add' component={GoodsAdd}></Route>
                                     <Route path='/admin/echarts/pie' component={Pie}></Route>
+                                    <Route path='/admin/user/list' component={User}></Route>
                                 </Admin>
                             )
                         }}></Route>
