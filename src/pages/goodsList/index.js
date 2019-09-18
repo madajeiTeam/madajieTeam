@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {Card,Table,Button,Pagination,Spin,Popconfirm, message} from 'antd'
+import GoodsUpdate from '../goodsUpdate'
 
 class Food extends Component{
     constructor(){
@@ -9,7 +10,9 @@ class Food extends Component{
             page: 1,
             pageSize: 4,
             total: 0,
-            loading: true
+            loading: true,
+            updateShow: false, // 修改模态框的显示
+            record: {}
         }
     }
     columns = [
@@ -17,6 +20,10 @@ class Food extends Component{
             title: '名称',
             dataIndex: 'name',
             key: 'name',
+        },{
+            title: '标题',
+            dataIndex: 'title',
+            key: 'title',
         },{
             title: '类型',
             dataIndex: 'goodstype',
@@ -26,12 +33,16 @@ class Food extends Component{
             dataIndex: 'img',
             key: 'img',
             render(data){
-                return(<img width='100' src={data}></img>)
+                return(<img width='100' height='70' src={data}></img>)
             }
         },{
-            title: '描述',
+            title: '简介',
             dataIndex: 'desc',
             key: 'desc',
+        },{
+            title: '详情',
+            dataIndex: 'detail',
+            key: 'detail',
         },{
             title: '价格',
             dataIndex: 'price',
@@ -43,7 +54,7 @@ class Food extends Component{
             render: (txt,record)=>{
                 return (
                     <div>
-                        <Button type='primary' size='small'>修改</Button>
+                        <Button type='primary' size='small' onClick={this.update.bind(this,record)}>修改</Button>
                         <Popconfirm
                             title='你确定要删除吗？'
                             onConfirm={this.confirmDel.bind(this,record._id)}
@@ -55,6 +66,10 @@ class Food extends Component{
             }
         },
     ]
+    update=(record)=>{
+        console.log(record)
+        this.setState({updateShow: true, record: record})
+    }
     confirmDel=(id)=>{
         let {page,pageSize} = this.state
         this.$axios({method: 'post',
@@ -85,17 +100,24 @@ class Food extends Component{
             }
         })
     }
+    refresh=()=>{
+        let {page,pageSize} = this.state
+        // 列表刷新：1.关掉模态框 2.刷新页面
+        this.setState({updateShow: false})
+        this.initData(page,pageSize)
+    }
     componentDidMount(){
         let {page,pageSize} = this.state
         this.initData(page,pageSize)
     }
     render(){
-        let {total,pageSize,loading} = this.state
+        let {total,pageSize,loading,updateShow,record} = this.state
         return (
             <Card className='food-container'>
                 <Spin tip='数据加载中'
                       spinning={loading}
                 >
+                    {!updateShow||<GoodsUpdate record={record} refreshFun={this.refresh}></GoodsUpdate>}
                     <Table 
                         dataSource={this.state.dataSource} 
                         columns={this.columns} 

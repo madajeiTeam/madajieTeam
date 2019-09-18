@@ -3,9 +3,11 @@ import {HashRouter,Route,Switch,Redirect} from 'react-router-dom'
 import  App from  './App'
 import Admin from 'pages/admin'
 import Login from 'pages/login'
+import TokenModel from 'components/tokenModel'
 
 import GoodsList from 'pages/goodsList'
 import GoodsAdd from 'pages/goodsAdd'
+import Pie from 'pages/pie';
 
 
 class RootRouter extends Component{
@@ -13,6 +15,7 @@ class RootRouter extends Component{
         return(
             <App>
                 <HashRouter>
+                    <TokenModel></TokenModel>
                     <Switch>
                         <Redirect exact from='/' to='/admin'></Redirect>
                         <Route path='/admin' render={()=>{
@@ -20,6 +23,7 @@ class RootRouter extends Component{
                                 <Admin>
                                     <Route path='/admin/goods/list' component={GoodsList}></Route>
                                     <Route path='/admin/goods/add' component={GoodsAdd}></Route>
+                                    <Route path='/admin/echarts/pie' component={Pie}></Route>
                                 </Admin>
                             )
                         }}></Route>

@@ -22,10 +22,10 @@ class LeftNav extends Component{
     }
     renderItem(arr){
         if(!arr.length) {return '暂无数据'}
-        return arr.map((item)=>{
+        return arr.map((item,index)=>{
             if(item.children){
                 return (
-                    <SubMenu title={item.name}>
+                    <SubMenu title={item.name} key={index}>
                         {/* 递归 */}
                         {this.renderItem(item.children)}
                     </SubMenu>

@@ -9,18 +9,11 @@ class FoodAdd extends Component{
     }
     upload=()=>{
         let file = this.refs.file.files[0]
-        console.log(file)
-        let formData = new FormData()
-        formData.append('img',file)
-        this.$axios.post('/hehe/admin/file/upload',formData)
-        .then((data)=>{
-            console.log(data)
-            if(data.err === 0){
-                this.setState({img: data.imgpath})
-            }else{
-                message.error('文件上传失败，请重试！')
-            }
-        })
+        var r = new FileReader()
+        r.onload=()=>{
+            this.setState({img: r.result})
+        }
+        r.readAsDataURL(file)
     }
     submit=()=>{
         let {name,price,img,desc,goodsType,title,detail} = this.state
