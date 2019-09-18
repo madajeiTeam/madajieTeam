@@ -6,7 +6,9 @@ import Login from 'pages/login'
 
 import GoodsList from 'pages/goodsList'
 import GoodsAdd from 'pages/goodsAdd'
-
+import BannerList from 'pages/bannerList'
+import BannerAdd from 'pages/bannerAdd'
+import UploadBase64 from 'pages/bannerAdd/upload_base64'
 
 class RootRouter extends Component{
     render() {
@@ -20,6 +22,10 @@ class RootRouter extends Component{
                                 <Admin>
                                     <Route path='/admin/goods/list' component={GoodsList}></Route>
                                     <Route path='/admin/goods/add' component={GoodsAdd}></Route>
+                                    <Route path='/admin/banner/list' component={BannerList}></Route>
+                                    <Route path='/admin/banner/add' component={BannerAdd}></Route>
+                                    <Route path='/admin/banner/base64' component={UploadBase64}></Route>
+                                    
                                 </Admin>
                             )
                         }}></Route>
