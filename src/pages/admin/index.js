@@ -1,6 +1,8 @@
 import React,{Component} from 'react'
 import './index.less'
 import LeftNav from 'components/leftNav'
+import Logout from 'components/logout'
+import Language from 'components/language'
 
 class Admin extends Component{
     render(){
@@ -10,7 +12,10 @@ class Admin extends Component{
                     <LeftNav></LeftNav>
                 </div>
                 <div className='admin-right'>
-                    <div className='admin-right-header'></div>
+                    <div className='admin-right-header'>
+                        <Language></Language>
+                        <Logout></Logout>
+                    </div>
                     <div className='admin-right-center'>
                         {this.props.children}
                     </div>
