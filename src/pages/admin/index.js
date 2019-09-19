@@ -10,7 +10,9 @@ class Admin extends Component{
                     <LeftNav></LeftNav>
                 </div>
                 <div className='admin-right'>
-                    <div className='admin-right-header'></div>
+                    <div className='admin-right-header'>
+                        
+                    </div>
                     <div className='admin-right-center'>
                         {this.props.children}
                     </div>
