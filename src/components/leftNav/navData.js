@@ -32,7 +32,8 @@ let obj = {
         path: '/admin/banner',
         children: [
             {name: '广告列表', path: '/admin/banner/list', key: '4-0'},
-            {name: '广告添加', path: '/admin/banner/add', key: '4-1'}
+            {name: '广告添加', path: '/admin/banner/add', key: '4-1'},
+            // {name: '文件上传_64', path: '/admin/banner/base64', key: '4-2'},
         ] 
     }]
 }
