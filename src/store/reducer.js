@@ -7,7 +7,12 @@ export default (preState=State,action)=>{
             console.log('老佛爷')
             newData.modelState = !newData.modelState
             break;
-    
+        case 'CHANGE_LANGUAGE_STATE':
+            console.log(params)
+            newData.langType = params
+            console.log(newData.langType)
+
+            break;
         default:
             break;
     }

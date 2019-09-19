@@ -2,13 +2,18 @@ import React,{Component} from 'react'
 import {Menu,Icon} from 'antd'
 import {withRouter} from 'react-router-dom'
 import navData from './navData'
+import Lang from '../language/languageData'
+import Store from '../../store/store'
+
 const {SubMenu} = Menu
+
 
 class LeftNav extends Component{
     constructor(){
         super()
         this.state={
-            data: []
+            data: [],
+    
         }
     }
     componentDidMount(){
@@ -21,20 +26,27 @@ class LeftNav extends Component{
         this.props.history.push(path)
     }
     renderItem(arr){
+        let {langType}=Store.getState()
         if(!arr.length) {return '暂无数据'}
         return arr.map((item,index)=>{
             if(item.children){
                 return (
-                    <SubMenu title={item.name} key={index}>
+                    <SubMenu title={Lang[langType][item.name]} key={index}>
                         {/* 递归 */}
                         {this.renderItem(item.children)}
                     </SubMenu>
                 )
             }else{
-                return <Menu.Item key={item.key}
+                return (<Menu.Item key={item.key}
                                   onClick={this.jump.bind(this,item.path)}
-                >{item.name}</Menu.Item>
+                >{Lang[langType][item.name]}</Menu.Item>)
             }
+        })
+    }
+
+    componentDidMount(){
+        Store.subscribe(()=>{
+            this.setState({})
         })
     }
     render(){
@@ -44,27 +56,6 @@ class LeftNav extends Component{
                   mode="vertical"
             >
                 {this.renderItem(navData.data)}
-                {/* {data.map((item)=>{
-                    if(item.children){
-                        return (
-                            <SubMenu key={item.key} title={item.name}>
-                                {item.children.map((item)=>{
-                                    return (
-                                        <Menu.Item key={item.key}
-                                                   onClick={this.jump.bind(this,item.path)}
-                                        >{item.name}</Menu.Item>
-                                    )
-                                })}
-                            </SubMenu>
-                        )
-                    }else{
-                        return (
-                            <Menu.Item key={item.key}
-                                       onClick={this.jump.bind(this,item.path)}
-                            >{item.name}</Menu.Item>
-                        )
-                    }
-                })} */}
             </Menu>
         )
     }
