@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import navData from './navData'
 import Lang from '../language/languageData'
 import Store from '../../store/store'
+import Style from './index.module.less'
 
 const {SubMenu} = Menu
 
@@ -51,12 +52,14 @@ class LeftNav extends Component{
     }
     render(){
         return (
-            <Menu theme='dark' 
-                  style={{ width: 230 }} 
-                  mode="vertical"
-            >
-                {this.renderItem(navData.data)}
-            </Menu>
+            <div class={Style.leftNav}>
+                <Menu theme='dark' 
+                    style={{ width: 230 }} 
+                    mode="vertical"
+                >
+                    {this.renderItem(navData.data)}
+                </Menu>
+            </div>
         )
     }
 }
